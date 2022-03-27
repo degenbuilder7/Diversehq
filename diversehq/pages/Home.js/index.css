@@ -1,8 +1,17 @@
+body
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 10evh;
+  background: #3f3f5a;
+}
 .mainContainer {
     display: flex;
     justify-content: center;
     width: 100%;
     margin-top: 64px;
+    background: #3f3f5a;
   }
   
   .dataContainer {
@@ -23,7 +32,6 @@
     background-color: yellow;
     color: whitesmoke;
     margin-top: 16px;
-    weight: 5px;
     color: blue;
   }
   

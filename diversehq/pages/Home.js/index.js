@@ -91,13 +91,10 @@ const wave = async () => {
         👋 Welcome to the first step towards joining a Great community!
         </div>
 
-        <div className="bio">
-          I am kamal and I this is my first Dapp and I am excited to share this with you , so that's pretty cool right? Connect your Ethereum wallet and wave at me!
-        </div>
-
-        <button className="waveButton" onClick={wave}>
+        <a><button className="waveButton" onClick={wave}>
           Create Token
         </button>
+        </a>
 
         {/*
         * If there is no currentAccount render this button
