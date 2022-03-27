@@ -1,2 +1,2 @@
-# village
-Village is a community building social media on web3
+# Diverse Hq
+Community Building Social Media on Web3.
