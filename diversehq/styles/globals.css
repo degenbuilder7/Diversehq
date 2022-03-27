@@ -35,10 +35,56 @@
   
   .home{
     background-color: whitesmoke;
-    min-height: 100%;
   }
   .center{
     background-color: bisque;
     justify-content: center;
     align-content: center;
+    align-self: center;
   }
+/* home */
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 64px;
+}
+
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+}
+
+.header {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.bio {
+  text-align: center;
+  background-color: yellow;
+  color: whitesmoke;
+  margin-top: 16px;
+  weight: 5px;
+  color: blue;
+}
+
+.waveButton {
+  position: relative;
+  cursor: pointer;
+  margin-top: 36px;
+  left: 200px;
+  padding: 8px;
+  width: 6cm;
+  align-items: center;
+  border: 0;
+  border-radius: 5px;
+}
+
+.waveButton:hover{
+  color: red;
+  background-color: green;
+}
