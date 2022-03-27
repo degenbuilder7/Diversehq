@@ -1,0 +1,13 @@
+.bg_vid{
+ position: absolute;
+ z-index: -1;
+ opacity: 1;
+ object-fit: cover;
+ width: 100vw;
+ height: 115vh;
+}
+
+.scrollbar::-webkit-scrollbar{
+    width: 7px;
+}
+
