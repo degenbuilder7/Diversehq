@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import Link from 'next/link';
 import { ethers } from "ethers";
 
 
@@ -91,10 +91,10 @@ const wave = async () => {
         👋 Welcome to the first step towards joining a Great community!
         </div>
 
-        <a><button className="waveButton" onClick={wave}>
+        <Link href='/tokencr'><button className="waveButton" onClick={wave}>
           Create Token
         </button>
-        </a>
+        </Link>
 
         {/*
         * If there is no currentAccount render this button
