@@ -16,17 +16,19 @@ const tokencr = () => {
   
 	
   return(
-    <div className={styles.container} id="tiltme">
-      <div className={styles.card}>
-         <div className={styles.content}>
-           <img src="https://bitcoinchaser.com/wp-content/uploads/2019/02/what-is-erc-20-token_800x480-compressor.jpg" alt="token" />
-            <input type="text" placeholder="Token name" />
-            <input type="text" placeholder="Token symbol" />
-            <input type="number" placeholder="Total Supply" />
-           <a href="/graph">Submit</a>
+    <div className={styles.body}>
+      <div className={styles.container} id='tiltme'>
+        <div className={styles.card}>
+          <div className={styles.content}>
+            <img src="https://bitcoinchaser.com/wp-content/uploads/2019/02/what-is-erc-20-token_800x480-compressor.jpg" alt="token" />
+            <input type="text" placeholder="Token name" className={styles.txt}/>
+            <input type="text" placeholder="Token symbol" className={styles.txt} />
+            <input type="number" placeholder="Total Supply" className={styles.txt} />
+            <a href="/graph">Submit</a>
+          </div>
         </div>
       </div>
-   </div>
+    </div>
   )
 }
 

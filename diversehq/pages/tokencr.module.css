@@ -4,16 +4,17 @@
     box-sizing: border-box;
     color: red;
     font-family: 'Poppins', sans-serif;
-  } 
-  body 
+  }   */
+  .body 
   {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 10evh;
     background: #3f3f5a;
   }
-  body::before{
+  .body::before{
     content: " ";
     position: absolute;
     top: 0;
@@ -25,7 +26,7 @@
   }
   
   
-  body::after{
+  .body::after{
     content: '';
     position: absolute;
     top: 0;
@@ -34,7 +35,7 @@
     height: 100%;
     background: linear-gradient(#2196F3,#091063);
     clip-path: circle(58% at right 78%);
-  }  */
+  }  
   
   .container
   {
@@ -80,13 +81,16 @@
    font-size: 5em;
    height: 150px;
    width: 150px;
-   color: rgba(255, 255, 255, 0.05);
+   /* color: rgba(255, 255, 255, 0.05); */
   }
-  .container .card .content h3
+  .txt
   {
-   font-size: 1.8em;
-   color: #fff;
+   font-size: 0.9em;
+   color: black;
    z-index: 1;
+   position: relative;
+   top: 80px;
+
   }
   
   .container .card .content a{
@@ -96,6 +100,8 @@
    margin-top: 15px;
    background: #fff;
    color: #000;
+   position: relative;
+   top: 80px;
    border-radius: 20px;
    text-decoration: none;
    font-weight: 500;
