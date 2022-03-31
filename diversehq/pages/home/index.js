@@ -1,11 +1,28 @@
 import React, { useEffect, useState, useContext } from "react";
 import Link from 'next/link';
 import {WalletContext} from "../../utils/WalletContext";
+import { createClient } from 'urql';
 
-
+const query = `
+query{
+  tokens {
+    id
+    count
+    tokenaddress
+    creator
+    name
+    symbol
+    totalSupply
+  }
+}
+`
+const client = createClient({
+  url: ""
+})
 
 const App = () => {
   const [wallet, setWallet] = useContext(WalletContext);
+  const [tokens, setTokens] = useState([]);
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -52,8 +69,15 @@ const App = () => {
       console.log(error)
     }
   }
+
+  async function fetchData() {
+    const response = await client.query(query).toPromise();
+    console.log('response:', response)
+    setTokens(response.data.tokens);
+  }
   useEffect(() => {
     checkIfWalletIsConnected();
+    fetchData();
   }, [])
 
   return (
@@ -76,6 +100,22 @@ const App = () => {
             Connect Wallet
           </button>
         )}
+      </div>
+      <br />
+      <div>
+      {
+        tokens.map((token, index) => (
+          <div>
+            <p>
+              `Token Name: ${token.name} <br></br>
+              Token Symbol: {token.symbol} <br></br>
+              Token Address: {token.tokenaddress} <br></br>
+              Total Supply: {token.totalSupply} <br></br>
+              Token Creator: {token.creator}`
+            </p>
+          </div>
+        ))
+      }
       </div>
     </div>
   );

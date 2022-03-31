@@ -1,6 +1,6 @@
 import {useState, createContext} from "react";
 
-export const WalletContext = createContext();
+export const WalletContext = createContext([]);
 
 export const WalletProvider = ({children}) => {
     const [wallet, setWallet] = useState('');
