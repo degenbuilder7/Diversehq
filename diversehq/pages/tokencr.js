@@ -74,12 +74,12 @@ const tokencr = () => {
             
             <form>
             <img src="https://bitcoinchaser.com/wp-content/uploads/2019/02/what-is-erc-20-token_800x480-compressor.jpg" alt="token" />
-              <label>Community Name:
-                  <input type="text" name="communityName" value={DaoName} onChange={(e) => setDaoName(e.target.value)} placeholder="Add your Community Name" />
+              <label>Community Name: 
+                   <input type="text" name="communityName" value={DaoName} onChange={(e) => setDaoName(e.target.value)} placeholder="Add your Community Name" />
               </label>
               <br />
               <label>Symbol:
-                  <input type="text" name="CommunitySymbol" value={symbol} onChange={(e) => setSymbol(e.target.value)} placeholder="Add your Token Symbol" />
+                   <input type="text" name="CommunitySymbol" value={symbol} onChange={(e) => setSymbol(e.target.value)} placeholder="Add your Token Symbol" />
               </label>
               <br />
               <label>Total Supply:

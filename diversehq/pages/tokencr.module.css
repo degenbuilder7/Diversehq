@@ -51,7 +51,7 @@
   }
   .container .card {
    position: relative;
-   width: 700px;
+   width: 900px;
    top:10px;
    height: 500px;
    margin: 30px;
@@ -79,8 +79,8 @@
    }
   .container .card .content img {
    position: absolute;
-   top: -80px;
-   right: 10px;
+   top: -150px;
+   right: -50px;
    font-size: 5em;
    height: 150px;
    width: 150px;
@@ -123,4 +123,6 @@
     border-radius: 4px;
     transition: all 0.3s ease;
     border-radius: 50px;
+    position: relative;
+    top: 50px;
   }
