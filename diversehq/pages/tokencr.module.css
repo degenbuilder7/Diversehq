@@ -4,6 +4,7 @@
     box-sizing: border-box;
     color: red;
     font-family: 'Poppins', sans-serif;
+    --text-color: 256, 256, 256;
   }   
   .body 
   {
@@ -45,15 +46,18 @@
    max-width: 1200px;
    flex-wrap: wrap;
    z-index: 1;
+   background: rgba(255, 255, 255, 0.1);
+   /* background-image: url(''); */
   }
   .container .card {
    position: relative;
-   width: 280px;
-   height: 400px;
+   width: 700px;
+   top:10px;
+   height: 500px;
    margin: 30px;
    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
-    background: Orgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -106,3 +110,17 @@
    font-weight: 500;
    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   } 
+
+  .btn{
+    background-image: linear-gradient(to right, rgb(1 134 218), rgb(182 49 167));
+    border: 0;
+    color: rgba(var(--text-color));
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    padding: 12px 32px;
+    margin: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+  }

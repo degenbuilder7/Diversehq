@@ -3,7 +3,7 @@ import styles from './tokencr.module.css';
 import VanillaTilt from 'vanilla-tilt';
 import {WalletContext} from "../utils/WalletContext";
 import TokenSeed from "../contracts/TokenSeed.json";
-import {ethers} from "ethers"
+import {ethers} from "ethers";
 
 const tokencr = () => {
     const [wallet] = useContext(WalletContext);
@@ -66,26 +66,33 @@ const tokencr = () => {
   },[]);
 	
   return(
-    <div className={styles.container} id="tiltme">
-      <div className={styles.card}>
-         <div className={styles.content}>
-           {/* <img src="https://bitcoinchaser.com/wp-content/uploads/2019/02/what-is-erc-20-token_800x480-compressor.jpg" alt="token" /> */}
-           <form>
-            <label>Community Name:
-                <input type="text" name="communityName" value={DaoName} onChange={(e) => setDaoName(e.target.value)} placeholder="Add your Community Name" />
-            </label>
-            <label>Symbol:
-                <input type="text" name="CommunitySymbol" value={symbol} onChange={(e) => setSymbol(e.target.value)} placeholder="Add your Token Symbol" />
-            </label>
-            <label>Total Supply:
-                <input type="number" name="TotalSupply" value={totalSupply} onChange={(e) => setTotalSupply(e.target.value)} placeholder="Add your Token Symbol" />
-            </label>
-            <button onClick={handleSubmit}>Create Token</button>
-
-        </form>
+    <>
+    
+      <div className={styles.container} id="tiltme">
+        <div className={styles.card}>
+          <div className={styles.content}>
+            
+            <form>
+            <img src="https://bitcoinchaser.com/wp-content/uploads/2019/02/what-is-erc-20-token_800x480-compressor.jpg" alt="token" />
+              <label>Community Name:
+                  <input type="text" name="communityName" value={DaoName} onChange={(e) => setDaoName(e.target.value)} placeholder="Add your Community Name" />
+              </label>
+              <br />
+              <label>Symbol:
+                  <input type="text" name="CommunitySymbol" value={symbol} onChange={(e) => setSymbol(e.target.value)} placeholder="Add your Token Symbol" />
+              </label>
+              <br />
+              <label>Total Supply:
+                  <input type="number" name="TotalSupply" value={totalSupply} onChange={(e) => setTotalSupply(e.target.value)} placeholder="Add your Token Symbol" />
+              </label>
+              <br/>
+              <button onClick={handleSubmit} className={styles.btn}>Create Token</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
+    
   )
 }
 
