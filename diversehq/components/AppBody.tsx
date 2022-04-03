@@ -60,7 +60,7 @@ const AppBody: React.FC<Props> = ({ state, setApiKey, createStream }) => {
       return (
         <div className="w-full h-3/5 flex items-center justify-center">
           <button
-            className="text-2xl border border-black rounded p-2"
+            className="text-2xl border border-black rounded-lg p-4 hover:bg-green-400 "
             onClick={createStream}
           >
             Create Stream
