@@ -157,8 +157,7 @@ const AppBody: React.FC<Props> = ({ state, setApiKey, createStream }) => {
                 <br />
                 rtmp://rtmp.livepeer.com/live/
               </span>
-              <button
-                onClick={}
+              <button              
                 className="border ml-1 p-1 rounded text-sm break-normal"
               >
                 Copy
@@ -171,7 +170,6 @@ const AppBody: React.FC<Props> = ({ state, setApiKey, createStream }) => {
                 {streamKey}
               </span>
               <button
-                onClick={}
                 className="border ml-1 p-1 rounded text-sm break-normal"
               >
                 Copy
@@ -184,7 +182,6 @@ const AppBody: React.FC<Props> = ({ state, setApiKey, createStream }) => {
                 https://cdn.livepeer.com/hls/{playbackId}/index.m3u8
               </span>
               <button
-                onClick={}
                 className="border ml-1 p-1 rounded text-sm break-normal"
               >
                 Copy
