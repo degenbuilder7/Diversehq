@@ -15,13 +15,13 @@ interface Props {
   createStream: () => void;
 }
 
-const copyTextToClipboard = (text: string) => {
-  navigator.permissions.query({ name: "clipboard-write" }).then((result) => {
-    if (result.state == "granted" || result.state == "prompt") {
-      navigator.clipboard.writeText(text);
-    }
-  });
-};
+// const copyTextToClipboard = (text: string) => {
+//   navigator.permissions.query({ name: "clipboard-write" }).then((result) => {
+//     if (result.state == "granted" || result.state == "prompt") {
+//       navigator.clipboard.writeText(text);
+//     }
+//   });
+// };
 
 const AppBody: React.FC<Props> = ({ state, setApiKey, createStream }) => {
   const { playbackId, streamIsActive, streamKey } = state;
@@ -158,9 +158,7 @@ const AppBody: React.FC<Props> = ({ state, setApiKey, createStream }) => {
                 rtmp://rtmp.livepeer.com/live/
               </span>
               <button
-                onClick={() =>
-                  copyTextToClipboard(`rtmp://rtmp.livepeer.com/live/`)
-                }
+                onClick={}
                 className="border ml-1 p-1 rounded text-sm break-normal"
               >
                 Copy
@@ -173,7 +171,7 @@ const AppBody: React.FC<Props> = ({ state, setApiKey, createStream }) => {
                 {streamKey}
               </span>
               <button
-                onClick={() => copyTextToClipboard(streamKey)}
+                onClick={}
                 className="border ml-1 p-1 rounded text-sm break-normal"
               >
                 Copy
@@ -186,11 +184,7 @@ const AppBody: React.FC<Props> = ({ state, setApiKey, createStream }) => {
                 https://cdn.livepeer.com/hls/{playbackId}/index.m3u8
               </span>
               <button
-                onClick={() =>
-                  copyTextToClipboard(
-                    `https://cdn.livepeer.com/hls/${playbackId}/index.m3u8`
-                  )
-                }
+                onClick={}
                 className="border ml-1 p-1 rounded text-sm break-normal"
               >
                 Copy
