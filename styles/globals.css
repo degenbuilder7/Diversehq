@@ -89,3 +89,7 @@
   color: red;
   background-color: green;
 }
+.dynamo{
+  border-style: solid;
+  border-color: #ff0000 #0000ff;
+}

@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import {useState} from "react"
 const Airtable = require('airtable');
 const base = new Airtable({apiKey: "keyX217mb8lxAgZS6"}).base("appH3euv1Dzz8CQx1");
@@ -37,7 +37,7 @@ const Join = () =>{
                   <>
                 <input type="email" placeholder="Email" name="join" onChange= {e => setMail(e.target.value)} value={mail} className="shadow-sm shadow-[#ffeaea] rounded-full bg-[#272626] h-8 w-72 pl-5 placeholder:white items-center justify-center" />
                 {!joined && !joining && <button className="bg-gradient-to-tr from-amber-500 to-fuchsia-700 w-16  rounded-full justify-center items-center h-8" onClick={handleSubmit}>Join</button>}
-                {joined &&  !joining &&<Image src='/Tick.png' width={35} height={30}/>}
+                {/* {joined &&  !joining &&<Image src='/Tick.png' width={35} height={30}/>} */}
                 {joined && !joining && <div className="text-white"> You will be notified</div>}
                 {/* {joining && <Image src='/Loading.gif' width={200} height={13}/>} */}
                 </>

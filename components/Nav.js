@@ -1,4 +1,4 @@
-import Image from "next/image"
+// import Image from "next/image"
 import ScrollAnimation from "react-animate-on-scroll";
 
 const Nav = () =>{
@@ -12,7 +12,7 @@ const Nav = () =>{
                     }
                 }} className="bg-gradient-to-tr from-amber-500 to-fuchsia-700 w-40 mr-5 px-2 py-1 text-2xl rounded-full ease-in-out duration-300  hover:w-48">Join</button>
                 <a href="https://discord.gg/sEe7KWne" className="bg-blurple content-center pt-1 px-1 rounded-full ">
-                <Image src="/DiscordWhite.png"  width={35} height={35} />
+                <img src="/DiscordWhite.png"  width={35} height={35} />
                 </a>
             </div>
         </div>

@@ -88,8 +88,10 @@ const App = () => {
         👋 Welcome to the first step towards creating a Great community!
         </div>
 
-        <Link href='/tokencr' className="waveButton">
-          Create Token
+        <Link href='/tokencr'>
+          <button className="waveButton">
+            Create Token
+          </button>
         </Link>
 
         
@@ -102,7 +104,7 @@ const App = () => {
         )}
       </div>
       <br />
-      <div>
+      <div className="dynamo">
       {
         tokens.map((token, index) => (
           <div>

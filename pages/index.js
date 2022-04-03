@@ -5,7 +5,7 @@ import Features from "../components/Features.js"
 import styles from "../styles/Home.module.css"
 import { useEffect, useRef, useState } from "react"
 import Join from "../components/Join.js"
-import ScrollAnimation from "react-animate-on-scroll"
+
 
 
 const Home = () => {
