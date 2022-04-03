@@ -8,6 +8,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.5.0",
+    "@heroicons/react": "^1.0.6",
     "airtable": "^0.11.1",
     "axios": "^0.21.1",
     "ethers": "^5.5.3",
