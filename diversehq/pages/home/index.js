@@ -17,7 +17,7 @@ query{
 }
 `
 const client = createClient({
-  url: ""
+  url: "https://api.thegraph.com/subgraphs/name/kirtirajsinh/diversehq"
 })
 
 const App = () => {
