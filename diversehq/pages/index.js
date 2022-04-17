@@ -6,16 +6,6 @@ import styles from "../styles/Home.module.css"
 import { useEffect, useRef, useState } from "react"
 import Join from "../components/Join.js"
 import ScrollAnimation from "react-animate-on-scroll"
-import posts from '../data/posts';
-import PostList from '../components/post-list';
-
-const Homepage = () => (
-  <div className="container">
-    <PostList posts={posts} />
-  </div>
-);
-
-export default Homepage;
 
 
 const Home = () => {
