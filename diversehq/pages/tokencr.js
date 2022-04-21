@@ -1,91 +1,93 @@
 import {useState , useContext, useEffect } from 'react';
-import styles from './tokencr.module.css';
-import VanillaTilt from 'vanilla-tilt';
 import {WalletContext} from "../utils/WalletContext";
 import TokenSeed from "../contracts/TokenSeed.json";
 import {ethers} from "ethers"
+import {db} from '../utils/firebase'
+import {collection, addDoc, Timestamp} from 'firebase/firestore'
+
 
 const tokencr = () => {
     const [wallet] = useContext(WalletContext);
-    const [DaoName, setDaoName] = useState("");
-    const [symbol, setSymbol] = useState("");
-    const [decimal, setDecimal] = useState('18')
-    const [totalSupply, setTotalSupply] = useState('');
-    if(typeof window === 'object'){
-      const element = document.querySelector("#tiltme");
-      VanillaTilt.init((element), {
-      max: 25,
-      speed: 400,
-      glare: true,
-      });
-    }
-    const  CONTRACT_ADDRESS = "0xbd8f2441a807FA841B2fB23893F5dE31c1433fBA";
+    const [tokenSymbol , setTokenSymbol] = useState("");
+    const [communityName, setCommunityName] = useState("");
+    const [totalSupply, setTotalSupply] = useState();
+    const [amount, setAmount] = useState();
+    const [decimal, setDecimal] = useState(18);
 
+    const CONTRACT_ADDRESS =  "0xa5f44E4ac546b87CB75FcaaAf9930f2A0FE6ca70";
     const handleSubmit = async() =>{
       event.preventDefault();
-      if(!DaoName || !decimal || !symbol || !totalSupply){
-        console.log("Fill all the required Field");
-        return;
-      }
-
-      await createDao(DaoName, 18, symbol, totalSupply, wallet);
+      await createCommunity(totalSupply, amount, 18, communityName, tokenSymbol, wallet);
     }
 
-     const createDao = async (DaoName, decimal, symbol, totalSupply, currentAccount) =>{
-       try{
-       const {ethereum} = window;
-       if(ethereum){
-         const provider = new ethers.providers.Web3Provider(ethereum);
-         const signer = provider.getSigner();
-         const contract = new ethers.Contract(CONTRACT_ADDRESS, TokenSeed.abi, signer);
+    const createCommunity = async(totalSupply, amount, decimal, communityName, tokenSymbol, wallet) =>{
+      try {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract(CONTRACT_ADDRESS, TokenSeed.abi, signer);
+        console.log("Going to pop wallet now to pay gas...")
+        
+        const res = await contract.create(totalSupply, amount, decimal, communityName, tokenSymbol, wallet, {gasLimit: 3000000, gasPrice: 30000000000});
+        const receipt = await res.wait();
 
-         console.log("Going to pop wallet now to pay gas...")
-         let tx = await contract.create(totalSupply,100000, decimal, DaoName, symbol, currentAccount);
-         const receipt = await tx.wait();
+        if (receipt.status === 1) {
+          console.log("Domain minted! https://mumbai.polygonscan.com/tx/"+res.hash);
+          handleFirebase()
+        }
+        else {
+          alert("Transaction failed! Please try again");
+        }
+  
+  
+        
+      } catch (error) {
+        console.error("Error creating Community", error);
+      }
+    }
+    const handleFirebase = async() =>{
+      try {
+        await addDoc(collection(db, 'communities'), {
+          name: communityName,
+          symbol: tokenSymbol,
+        })
+      } catch (err) {
+        alert(err)
+      }
+    }
 
-         if (receipt.status === 1) {
-           console.log("Domain minted! https://mumbai.polygonscan.com/tx/"+tx.hash);
-           
-          //  setDaoName('');
-          //  setSymbol('');
-          //  setTotalSupply('');
-         }
-         else {
-           alert("Transaction failed! Please try again");
-         }
-   
-       }
-     }
-       catch(error){
-         console.log(error);
-       }
-     }
-  useEffect(() =>{
-    console.log(wallet);
-    console.log("Create Token");
-  },[]);
+    useEffect(()=>{
+      console.log(wallet);
+    },[])
 	
   return(
-    <div className={styles.container} id="tiltme">
-      <div className={styles.card}>
-         <div className={styles.content}>
-           {/* <img src="https://bitcoinchaser.com/wp-content/uploads/2019/02/what-is-erc-20-token_800x480-compressor.jpg" alt="token" /> */}
-           <form>
-            <label>Community Name:
-                <input type="text" name="communityName" value={DaoName} onChange={(e) => setDaoName(e.target.value)} placeholder="Add your Community Name" />
-            </label>
-            <label>Symbol:
-                <input type="text" name="CommunitySymbol" value={symbol} onChange={(e) => setSymbol(e.target.value)} placeholder="Add your Token Symbol" />
-            </label>
-            <label>Total Supply:
-                <input type="number" name="TotalSupply" value={totalSupply} onChange={(e) => setTotalSupply(e.target.value)} placeholder="Add your Token Symbol" />
-            </label>
-            <button onClick={handleSubmit}>Create Token</button>
-
-        </form>
-        </div>
-      </div>
+     <div className="w-full max-w-xs p-5">
+    <div className="mb-4  items-center ">
+      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="communityName">
+        Community Name
+      </label>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="communityName" type="text" placeholder="community Name"  onChange={e => setCommunityName(e.target.value)} />
     </div>
+    <div className="mb-6">
+      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tokenSymbol">
+        Token Symbol
+      </label>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="tokenSymbol" type="text" placeholder="Token Symbol"  onChange={e => setTokenSymbol(e.target.value)}/>
+    </div>
+    <div className="mb-6">
+      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tokenSymbol">
+        Total Supply
+      </label>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="tokenSymbol" type="number" placeholder="Token Symbol"  onChange={e => setTotalSupply(Number(e.target.value))} />
+    </div>
+    <div className="mb-6">
+      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tokenSymbol">
+        Initial Supply
+      </label>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="tokenSymbol" type="number" placeholder="Token Symbol"  onChange={e => setAmount(Number(e.target.value))} />
+    </div>
+    <button className="border border:black-500 p-5" onClick={handleSubmit}>Submit </button><br/>
+    The Token will be Minted on the Polygon Testnet during the testing Period. Please change your Network to Polygon Testnet.
+</div>
   )
 }
 
