@@ -7,7 +7,7 @@ export default function Community(){
                 <Image className="rounded-[25px]" src="https://academy-public.coinmarketcap.com/optimized-uploads/1c07f13ce8e748f6934a28583cca6f5b.jpg" width={500} height={600}  />
                <div className="justify-center items-center text-justify -tracking-2 lg:pl-20 ">
             {/* <h1 className="text-center text-[30px] font-extrabold gradient-text">You like Subreddits?<br /> You will Love Communities in Village</h1> */}
-            <h1 className="text-center font-extrabold text-3xl pt-10 pb-10 gradient-text">You Like SubReddits?<br/> You'll Love Communities in Village.</h1>
+            <h1 className="text-center font-extrabold text-3xl pt-10 pb-10 gradient-text">You Like SubReddits?<br/> You'll Love Communities in Diversehq.</h1>
                    <div className="p-4 text-lg">
                        {community.map((item, index) =>{
                             return( 

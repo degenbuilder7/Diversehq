@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import Link from 'next/link';
 import {WalletContext} from "../../utils/WalletContext";
-import { createClient } from 'urql';
+import { createClient } from '@urql/core';
 
 const query = `
 query{
@@ -17,7 +17,7 @@ query{
 }
 `
 const client = createClient({
-  url: ""
+  url: "https://api.thegraph.com/subgraphs/name/kirtirajsinh/diversehq"
 })
 
 const App = () => {
@@ -82,43 +82,48 @@ const App = () => {
 
   return (
     
-    <div className="mainContainer">
-      <div className="dataContainer">
+    <div className="h-screen bg-gray-50">
+      <div className="flex flex-col ">
+
+      <div className="flex flex-col justify-center items-center">
         <div className="header">
-        👋 Welcome to the first step towards creating a Great community!
+        👋 Welcome to the first step towards <br/> building a Great community!
         </div>
-
-        <Link href='/tokencr' className="waveButton">
-          Create Token
-        </Link>
-
-        
-        {/* * If there is no currentAccount render this button */}
-        
-        {!wallet && (
-          <button className="waveButton" onClick={connectWallet}>
+        <div className="pt-8">
+        {!wallet ? (
+          <button className="border border-black max-w-md hover:bg-gray-400 p-2 rounded-full " onClick={connectWallet}>
             Connect Wallet
           </button>
+        ): (
+          <button className="border border-black max-w-md hover:bg-red-50 p-2 rounded-full cursor-cell">
+          <Link href='/tokencr' className="">
+          Create Token
+        </Link>
+          </button>
         )}
+        </div>
       </div>
-      <br />
-      <div>
+
+      <div className="flex flex-col p-16">
       {
-        tokens.map((token, index) => (
-          <div>
-            <p>
-              `Token Name: ${token.name} <br></br>
-              Token Symbol: {token.symbol} <br></br>
-              Token Address: {token.tokenaddress} <br></br>
-              Total Supply: {token.totalSupply} <br></br>
-              Token Creator: {token.creator}`
-            </p>
-          </div>
-        ))
-      }
+  tokens.map((token) => (
+    <button className="p-2 hover:bg-red-50" key={token.tokenaddress}>
+    <Link href={'/home/' + token.tokenaddress}  className="">
+      
+      <p className="border rounded-md border-black p-3 ">
+        Community Name: {token.name} <br></br>
+        Token Symbol: ${token.symbol} <br></br>
+        Token Creator: {token.creator}<br/>
+        Token Address: {token.tokenaddress}
+      </p>
+    </Link>
+    </button>
+  ))
+}
+      </div>
       </div>
     </div>
   );
 }
-
 export default App
+

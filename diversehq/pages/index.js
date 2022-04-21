@@ -72,7 +72,7 @@ const Home = () => {
       </div>
       <div className="flex flex-col">
       <Community />
-      <Features />
+      {/* <Features /> */}
       <Join />
       </div>
     </div>

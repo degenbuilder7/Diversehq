@@ -2,17 +2,17 @@ module.exports = {
     community:[
         {
             header:'Create and Exchange unique Community Tokens',
-            description:'Create Community and unique community Tokens. Set Roles and previledges for different Community tokens. Exchange Community Tokens with other Community Tokens. ',
+            description:'Create Community Tokens and incentivize Engaging Members ',
             icon:'/CommunityToken.png',
         },
         {
             header:'Allow token holders to create, sell nfts in your community',
-            description:'Allow token holders to post thier memes, arts and even cute kitties as nfts.',
+            description:'Allow token holders to post thier memes, arts and even cute kitties within respective Commmunity.',
             icon:'/KeysHolder.png',
         },
         {
             header:'Create and Exchange unique Community Tokens',
-            description:'Owners and token holders can choose to earn some royalties on every nfts sold.',
+            description:'Own your Data and get in a Positive sum game.',
             icon:'/EarnMoney.png',
         }
     ],
